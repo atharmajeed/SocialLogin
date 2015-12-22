@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /opt/tomcat7/webapps
+hooks:
+  BeforeInstall:
+    - location: /opt/tomcat7/scripts/stoptomcat.sh
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: /opt/tomcat7/scripts/starttomcat.sh
+      timeout: 300
+      runas: root
